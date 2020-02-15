@@ -1,6 +1,5 @@
-package no.sonat.meldingsvarsler;
+package no.sonat.meldingsvarsler.abonnent;
 
-import java.io.IOException;
 import java.util.List;
 
 public interface AbonnentRepository {

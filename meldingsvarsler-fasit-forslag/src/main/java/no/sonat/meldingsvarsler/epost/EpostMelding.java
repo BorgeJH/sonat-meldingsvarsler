@@ -3,20 +3,23 @@ package no.sonat.meldingsvarsler.epost;
 import no.sonat.meldingsvarsler.Melding;
 
 public class EpostMelding implements Melding {
-    private String epostMelding;
-    private String epostTittel;
+    static final String MELDINGSTYPE = "EPOST";
 
-    EpostMelding(String epostMelding) {
-        this.epostMelding = epostMelding;
+    private final String epostTeskst;
+    private final String epostTittel;
+
+    public EpostMelding(String epostTeskst, String epostTittel) {
+        this.epostTeskst = epostTeskst;
+        this.epostTittel = epostTittel;
     }
 
     @Override
     public String meldingstype() {
-        return "EPOST";
+        return MELDINGSTYPE;
     }
 
     public String epostMelding() {
-        return epostMelding;
+        return epostTeskst;
     }
 
     public String epostTittel() {

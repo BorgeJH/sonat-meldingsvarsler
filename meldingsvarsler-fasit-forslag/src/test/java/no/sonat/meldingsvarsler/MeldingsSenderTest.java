@@ -10,18 +10,18 @@ import no.sonat.meldingsvarsler.sms.SMSAbonnent;
 import no.sonat.meldingsvarsler.sms.SMSMelding;
 import no.sonat.meldingsvarsler.sms.SMSProsessor;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-class MeldingsVarslerTest {
-    AbonnentRespositoryStub abonnentRespositoryStub = new AbonnentRespositoryStub();
-    List<MeldingProsessor> meldingProsessorer = new ArrayList<>();
+class MeldingsSenderTest {
+    final AbonnentRespositoryStub abonnentRespositoryStub = new AbonnentRespositoryStub();
+    final List<MeldingProsessor> meldingProsessorer = new ArrayList<>();
 
-    @BeforeAll
-    void setup() {
+    @BeforeEach
+    void initEach() {
         meldingProsessorer.add(new EpostProsessor());
         meldingProsessorer.add(new FacebookProsessor());
         meldingProsessorer.add(new SMSProsessor());
@@ -36,7 +36,7 @@ class MeldingsVarslerTest {
     }
 
     @Test
-    public void sendMeldingerTest() throws IOException {
+    public void sendMeldingerTest() {
 
         MeldingSender meldingSender = new MeldingSender(abonnentRespositoryStub, meldingProsessorer);
 

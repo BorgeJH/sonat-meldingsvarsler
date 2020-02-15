@@ -1,10 +1,10 @@
-package no.sonat.meldingsvarsler;
+package no.sonat.meldingsvarsler.abonnent;
 
-import no.sonat.meldingsvarsler.sms.SMSMelding;
+import no.sonat.meldingsvarsler.Melding;
 
 public interface Abonnent {
     String navn();
     Boolean erAktiv();
-    public boolean abonnererPaa(Melding melding);
+    boolean abonnererPaa(Melding melding);
 
 }

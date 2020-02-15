@@ -3,18 +3,20 @@ package no.sonat.meldingsvarsler.facebook;
 import no.sonat.meldingsvarsler.Melding;
 
 public class FacebookMelding implements Melding {
-    String facebookMelding;
+    static final String MELDINGSTYPE = "FACEBOOK";
 
-    FacebookMelding(String facebookMelding) {
-        this.facebookMelding = facebookMelding;
+    private final String tekst;
+
+    public FacebookMelding(String tekst) {
+        this.tekst = tekst;
     }
 
     @Override
     public String meldingstype() {
-        return "SMS";
+        return MELDINGSTYPE;
     }
 
     public String melding() {
-        return facebookMelding;
+        return tekst;
     }
 }

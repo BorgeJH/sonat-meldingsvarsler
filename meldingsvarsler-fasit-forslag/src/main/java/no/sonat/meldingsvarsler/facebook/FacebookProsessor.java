@@ -1,16 +1,23 @@
 package no.sonat.meldingsvarsler.facebook;
 
-import no.sonat.meldingsvarsler.Abonnent;
+import no.sonat.meldingsvarsler.abonnent.Abonnent;
 import no.sonat.meldingsvarsler.Melding;
 import no.sonat.meldingsvarsler.MeldingProsessor;
 
 public class FacebookProsessor implements MeldingProsessor {
     @Override
+    public boolean stoetterMeldingstype(Melding melding) {
+        return melding instanceof FacebookMelding;
+    }
+
+    @Override
     public void sendMelding(Abonnent abonnent, Melding melding) {
-        FacebookAbonnent facebookAbonnent = (FacebookAbonnent) abonnent;
-        FacebookMelding facebookMelding = (FacebookMelding) melding;
-        System.out.println("Sender Faceebook melding til "
-                + ((FacebookAbonnent) abonnent).navn()
-                + " => " + ((FacebookMelding) melding).facebookMelding);
+        sendFaceMelding(((FacebookAbonnent) abonnent), (FacebookMelding) melding);
+    }
+
+    public void sendFaceMelding(FacebookAbonnent facebookAbonnent, FacebookMelding facebookMelding) {
+        System.out.println("Sender Facebook melding til "
+                + facebookAbonnent.navn()
+                + " => " + facebookMelding.melding());
     }
 }
