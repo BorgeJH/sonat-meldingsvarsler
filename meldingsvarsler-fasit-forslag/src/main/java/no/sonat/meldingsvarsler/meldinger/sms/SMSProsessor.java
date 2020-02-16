@@ -16,9 +16,10 @@ public class SMSProsessor implements MeldingProsessor {
         sendSms((SMSAbonnent) abonnent, (SMSMelding) melding);
     }
 
-    public void sendSms(SMSAbonnent smsAbonnentt, SMSMelding smsMelding) {
+    public void sendSms(SMSAbonnent smsAbonnent, SMSMelding smsMelding) {
         System.out.println("Sender SMS til "
-                + smsAbonnentt.telefonnummer()
+                + smsAbonnent.telefonnummer()
+                + " (" + smsAbonnent.navn() + ")"
                 + " => " + smsMelding.tekstmelding
         );
     }

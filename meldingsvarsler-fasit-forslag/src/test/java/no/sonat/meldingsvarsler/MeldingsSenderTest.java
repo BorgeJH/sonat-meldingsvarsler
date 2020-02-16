@@ -1,6 +1,7 @@
 package no.sonat.meldingsvarsler;
 
 import no.sonat.meldingsvarsler.infrastructure.abonnent.AbonnentRepositoryReader;
+import no.sonat.meldingsvarsler.infrastructure.abonnent.AbonnentRepositoryStatistikk;
 import no.sonat.meldingsvarsler.infrastructure.abonnent.AbonnentRepositoryWriter;
 import no.sonat.meldingsvarsler.meldinger.MeldingProsessor;
 import no.sonat.meldingsvarsler.meldinger.epost.EpostAbonnent;
@@ -28,6 +29,7 @@ class MeldingsSenderTest {
 
     final MeldingRepository meldingRepositoryReader = meldingRespositoryStub;
     final AbonnentRepositoryReader abonnentRespositoryReader = abonnentRespositoryStub;
+    final AbonnentRepositoryStatistikk abonnentRepositoryStatistikk = abonnentRespositoryStub;
     final List<MeldingProsessor> meldingProsessorer = new ArrayList<>();
     final MeldingSender meldingSender = new MeldingSender(meldingRepositoryReader, abonnentRespositoryReader, meldingProsessorer);
 
@@ -57,5 +59,15 @@ class MeldingsSenderTest {
     @Test
     public void sendMeldingerTest() {
         meldingSender.sendMeldinger();
+    }
+
+    @Test
+    public void statistikk(){
+        abonnentRespositoryReader.hentAbonnenter().stream()
+                .map(abonnent -> abonnent.getClass())
+                .distinct()
+                .forEach(aClass ->
+                    System.out.println(aClass.getSimpleName() + ":" + abonnentRepositoryStatistikk.antallAbonnererPaa(aClass)
+                ));
     }
 }

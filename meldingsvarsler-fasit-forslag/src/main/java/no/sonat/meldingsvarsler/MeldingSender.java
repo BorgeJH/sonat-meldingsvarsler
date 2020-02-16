@@ -11,7 +11,7 @@ public class MeldingSender {
     private final AbonnentRepositoryReader abonnentRespository;
     private final List<MeldingProsessor> meldingProsessorer;
 
-    /* Inversion Of Control : abonnentRespository */
+    /* Inversion Of Control : abonnentRespository, meldingRepository, meldingProsessors */
     public MeldingSender(MeldingRepository meldingRepository,
             AbonnentRepositoryReader abonnentRespository,
             List<MeldingProsessor> meldingProsessors) {
