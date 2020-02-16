@@ -7,10 +7,12 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="meldingsvarsler" />
+        <module name="meldingsvarsler-oppgave" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="meldingsvarsler" target="8" />
+      <module name="meldingsvarsler-oppgave" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>

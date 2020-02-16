@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/meldingsvarsler.iml" filepath="$PROJECT_DIR$/meldingsvarsler.iml" />
+      <module fileurl="file://$PROJECT_DIR$/meldingsvarsler-oppgave.iml" filepath="$PROJECT_DIR$/meldingsvarsler-oppgave.iml" />
     </modules>
   </component>
 </project>
