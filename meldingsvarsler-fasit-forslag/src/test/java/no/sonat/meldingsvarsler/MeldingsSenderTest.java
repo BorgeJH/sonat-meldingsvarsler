@@ -1,18 +1,21 @@
 package no.sonat.meldingsvarsler;
 
-import no.sonat.meldingsvarsler.abonnent.AbonnentRepositoryReader;
-import no.sonat.meldingsvarsler.abonnent.AbonnentRepositoryWriter;
-import no.sonat.meldingsvarsler.epost.EpostAbonnent;
-import no.sonat.meldingsvarsler.epost.EpostMelding;
-import no.sonat.meldingsvarsler.epost.EpostProsessor;
-import no.sonat.meldingsvarsler.facebook.FacebookAbonnent;
-import no.sonat.meldingsvarsler.facebook.FacebookMelding;
-import no.sonat.meldingsvarsler.facebook.FacebookProsessor;
-import no.sonat.meldingsvarsler.meldinger.MeldingRepository;
-import no.sonat.meldingsvarsler.meldinger.MeldingRepositoryWriter;
-import no.sonat.meldingsvarsler.sms.SMSAbonnent;
-import no.sonat.meldingsvarsler.sms.SMSMelding;
-import no.sonat.meldingsvarsler.sms.SMSProsessor;
+import no.sonat.meldingsvarsler.infrastructure.abonnent.AbonnentRepositoryReader;
+import no.sonat.meldingsvarsler.infrastructure.abonnent.AbonnentRepositoryWriter;
+import no.sonat.meldingsvarsler.meldinger.MeldingProsessor;
+import no.sonat.meldingsvarsler.meldinger.epost.EpostAbonnent;
+import no.sonat.meldingsvarsler.meldinger.epost.EpostMelding;
+import no.sonat.meldingsvarsler.meldinger.epost.EpostProsessor;
+import no.sonat.meldingsvarsler.meldinger.facebook.FacebookAbonnent;
+import no.sonat.meldingsvarsler.meldinger.facebook.FacebookMelding;
+import no.sonat.meldingsvarsler.meldinger.facebook.FacebookProsessor;
+import no.sonat.meldingsvarsler.infrastructure.meldinger.MeldingRepository;
+import no.sonat.meldingsvarsler.infrastructure.meldinger.MeldingRepositoryWriter;
+import no.sonat.meldingsvarsler.meldinger.sms.SMSAbonnent;
+import no.sonat.meldingsvarsler.meldinger.sms.SMSMelding;
+import no.sonat.meldingsvarsler.meldinger.sms.SMSProsessor;
+import no.sonat.meldingsvarsler.stubs.AbonnentRespositoryStub;
+import no.sonat.meldingsvarsler.stubs.MeldingRepositoryStub;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

@@ -1,7 +1,8 @@
 package no.sonat.meldingsvarsler;
 
-import no.sonat.meldingsvarsler.abonnent.AbonnentRepositoryReader;
-import no.sonat.meldingsvarsler.meldinger.MeldingRepository;
+import no.sonat.meldingsvarsler.infrastructure.abonnent.AbonnentRepositoryReader;
+import no.sonat.meldingsvarsler.infrastructure.meldinger.MeldingRepository;
+import no.sonat.meldingsvarsler.meldinger.MeldingProsessor;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ public class MeldingSender {
     /* Inversion Of Control : abonnentRespository */
     public MeldingSender(MeldingRepository meldingRepository,
             AbonnentRepositoryReader abonnentRespository,
-                         List<MeldingProsessor> meldingProsessors) {
+            List<MeldingProsessor> meldingProsessors) {
         this.abonnentRespository = abonnentRespository;
         this.meldingProsessorer = meldingProsessors;
         this.meldingRepository = meldingRepository;
