@@ -1,4 +1,4 @@
-package no.sonat.meldingsvarsler;
+package no.sonat.meldingsvarsler.meldinger.sms;
 
 public class SMSMelding{
 
