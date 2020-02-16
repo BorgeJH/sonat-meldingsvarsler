@@ -1,12 +1,11 @@
 package no.sonat.meldingsvarsler;
 
-import no.sonat.meldingsvarsler.abonnent.SMSAbonnent;
+import no.sonat.meldingsvarsler.meldinger.sms.SMSAbonnent;
 import no.sonat.meldingsvarsler.intrastructure.AbonnentFileRepository;
 import no.sonat.meldingsvarsler.meldinger.sms.SMSMelding;
+import no.sonat.meldingsvarsler.meldinger.sms.SMSProsessor;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class MeldingSender {
@@ -25,7 +24,7 @@ public class MeldingSender {
     }
 
     private void sendSms(SMSAbonnent abonnent, SMSMelding melding) {
-        System.out.println("TLF: " + abonnent.navn() + " (" + abonnent.telefonnummer() +") => " + melding.melding());
+        new SMSProsessor().sendSms(abonnent, melding);
     }
 
 }

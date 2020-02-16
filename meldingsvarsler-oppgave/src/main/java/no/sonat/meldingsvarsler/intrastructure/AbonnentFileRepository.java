@@ -1,6 +1,6 @@
 package no.sonat.meldingsvarsler.intrastructure;
 
-import no.sonat.meldingsvarsler.abonnent.SMSAbonnent;
+import no.sonat.meldingsvarsler.meldinger.sms.SMSAbonnent;
 
 import java.io.*;
 import java.util.ArrayList;

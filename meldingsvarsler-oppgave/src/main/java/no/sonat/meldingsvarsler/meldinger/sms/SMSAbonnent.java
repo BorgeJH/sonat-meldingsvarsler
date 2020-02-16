@@ -1,4 +1,4 @@
-package no.sonat.meldingsvarsler.abonnent;
+package no.sonat.meldingsvarsler.meldinger.sms;
 
 public class SMSAbonnent {
     private final String navn;

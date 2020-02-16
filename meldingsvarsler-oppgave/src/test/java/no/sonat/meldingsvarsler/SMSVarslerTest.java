@@ -13,4 +13,9 @@ class SMSVarslerTest {
         SMSMelding smsMelding = new SMSMelding("Vårens kleskolleksjon har kommet. Løp og kjøp. Førstemann til mølla!!");
         smsVarsler.sendMelding(smsMelding);
     }
+
+    @Test
+    public void statistikk() {
+        // Skriv ut antall abonnenter per melding
+    }
 }
