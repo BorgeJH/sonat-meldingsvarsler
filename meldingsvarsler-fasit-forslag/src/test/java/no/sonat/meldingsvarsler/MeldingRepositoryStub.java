@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MeldingRepositoryStub implements MeldingRepository, MeldingRepositoryWriter {
-    List<Melding> meldinger = new ArrayList<>();
+    final List<Melding> meldinger = new ArrayList<>();
     @Override
     public List<Melding> hentMeldinger(){
         meldinger.add(new SMSMelding("Vårens kleskolleksjon har kommet. Løp og kjøp. Førstemann til mølla!!"));

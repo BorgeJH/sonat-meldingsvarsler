@@ -5,5 +5,5 @@ import no.sonat.meldingsvarsler.Melding;
 import java.util.List;
 
 public interface MeldingRepository {
-    public List<Melding> hentMeldinger();
+    List<Melding> hentMeldinger();
 }

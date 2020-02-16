@@ -1,1 +1,3 @@
-no\sonat\meldingsvarsler\SMSVarslerTest.class
+no\sonat\meldingsvarsler\AbonnentRespositoryStub.class
+no\sonat\meldingsvarsler\MeldingRepositoryStub.class
+no\sonat\meldingsvarsler\MeldingsSenderTest.class
