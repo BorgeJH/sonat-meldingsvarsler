@@ -7,46 +7,38 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SMSVarsler {
-    private List<String> abonnenter;
-    private String melding;
-    public void leggTilbonnenter(List<String> abonnenter){
-        this.abonnenter = abonnenter;
-    }
-
-    public void leggTilAbonnent(String abonnent){
-        this.abonnenter.add(abonnent);
-    }
-
-    public void sendMelding(final String melding) {
-        abonnenter.forEach(abonnent -> sendSMS(abonnent, melding));
-    }
-
-    private void sendSMS(String abonnent, String melding) {
-        System.out.println("TLF: " + abonnent + " " + melding);
-    }
+    private List<SMSAbonnent> abonnenter;
 
     public void hentAbonnenter() {
         File file = new File("abonnenter.csv");
+        List<SMSAbonnent> abonnenter = new ArrayList<>();
         try (
             BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String line;
             StringBuffer buffer = new StringBuffer();
             while((line = reader.readLine()) != null) {
-                buffer.append(line);
+                List<String> values = Arrays.asList(line.toString().split(","));
+                SMSAbonnent smsAbonnent = new SMSAbonnent(values.get(0), values.get(1));
+                abonnenter.add(smsAbonnent);
+
             }
-            this.abonnenter = Arrays.asList(buffer.toString().split(","));
         } catch (IOException e) {
         }
+        this.abonnenter = abonnenter;
     }
 
-    public void lagreAbonnenter() throws IOException {
+    public void leggTilAbonnent(SMSAbonnent smsAbonnent) throws IOException {
         File file = new File("abonnenter.csv");
         FileWriter fileWriter = null;
         try {
             fileWriter = new FileWriter(file);
-            fileWriter.write(abonnenter.stream().collect(Collectors.joining(",")));
+            StringBuffer sb = new StringBuffer();
+            abonnenter.stream()
+                    .map(abonnent -> abonnent.navn()+"," + abonnent.telefonnummer())
+                    .forEach(linje -> sb.append(linje));
+
+            fileWriter.write(sb.toString());
         } catch (IOException e) {
-            e.printStackTrace();
         } finally {
             try {
                 fileWriter.close();
@@ -55,4 +47,13 @@ public class SMSVarsler {
             }
         }
     }
+
+    public void sendMelding(SMSMelding melding) {
+        abonnenter.forEach(abonnent -> sendSms(abonnent, melding));
+    }
+
+    private void sendSms(SMSAbonnent abonnent, SMSMelding melding) {
+        System.out.println("TLF: " + abonnent.navn() + " (" + abonnent.telefonnummer() +") => " + melding.tekstmelding);
+    }
+
 }
