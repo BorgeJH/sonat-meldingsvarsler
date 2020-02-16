@@ -1,7 +1,6 @@
 package no.sonat.meldingsvarsler;
 
 import java.io.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -18,10 +17,10 @@ public class SMSVarsler {
     }
 
     public void sendMelding(final String melding) {
-        abonnenter.forEach(abonnent -> sendSMS(abonnent, melding));
+        abonnenter.forEach(abonnent -> sendSms(abonnent, melding));
     }
 
-    private void sendSMS(String abonnent, String melding) {
+    private void sendSms(String abonnent, String melding) {
         System.out.println("TLF: " + abonnent + " " + melding);
     }
 
