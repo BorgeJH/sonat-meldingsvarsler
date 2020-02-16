@@ -1,29 +1,33 @@
 package no.sonat.meldingsvarsler;
 
-import no.sonat.meldingsvarsler.abonnent.Abonnent;
-import no.sonat.meldingsvarsler.abonnent.AbonnentRepository;
+import no.sonat.meldingsvarsler.abonnent.AbonnentRepositoryReader;
+import no.sonat.meldingsvarsler.meldinger.MeldingRepository;
 
 import java.util.List;
 
 public class MeldingSender {
-    private final AbonnentRepository abonnentRespository;
+    private final MeldingRepository meldingRepository;
+    private final AbonnentRepositoryReader abonnentRespository;
     private final List<MeldingProsessor> meldingProsessorer;
 
-    public MeldingSender(AbonnentRepository abonnentRespository, List<MeldingProsessor> meldingProsessors) {
+    /* Inversion Of Control : abonnentRespository */
+    public MeldingSender(MeldingRepository meldingRepository,
+            AbonnentRepositoryReader abonnentRespository,
+                         List<MeldingProsessor> meldingProsessors) {
         this.abonnentRespository = abonnentRespository;
         this.meldingProsessorer = meldingProsessors;
+        this.meldingRepository = meldingRepository;
     }
 
-    public void sendMelding(Melding melding) {
-        abonnentRespository.hentAbonnenter().stream()
-                .filter(abonnent -> abonnent.abonnererPaa( melding))
-                .forEach(abonnent -> sendMelding(abonnent, melding));
+    public void sendMeldinger() {
+        meldingRepository.hentMeldinger().forEach(melding -> {
+            meldingProsessorer.stream()
+                .filter(meldingProsessor -> meldingProsessor.haandtererUtsendingAv(melding))
+                .forEach(meldingProsessor -> {
+                    abonnentRespository.hentAbonnenter().stream()
+                            .filter(abonnent -> abonnent.abonnererPaa(melding))
+                            .forEach(abonnent -> meldingProsessor.sendMelding(abonnent, melding));
+                });
+        });
     }
-
-    private void sendMelding(Abonnent abonnent, Melding melding) {
-        meldingProsessorer.stream()
-                .filter(meldingProsessor -> meldingProsessor.stoetterMeldingstype(melding))
-                .forEach(meldingProsessor -> meldingProsessor.sendMelding(abonnent, melding));
-    }
-
 }

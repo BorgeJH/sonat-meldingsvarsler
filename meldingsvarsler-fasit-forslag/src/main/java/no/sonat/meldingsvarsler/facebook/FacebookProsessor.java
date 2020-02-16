@@ -6,7 +6,7 @@ import no.sonat.meldingsvarsler.MeldingProsessor;
 
 public class FacebookProsessor implements MeldingProsessor {
     @Override
-    public boolean stoetterMeldingstype(Melding melding) {
+    public boolean haandtererUtsendingAv(Melding melding) {
         return melding instanceof FacebookMelding;
     }
 

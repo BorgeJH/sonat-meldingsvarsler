@@ -7,7 +7,7 @@ import no.sonat.meldingsvarsler.MeldingProsessor;
 public class SMSProsessor implements MeldingProsessor {
 
     @Override
-    public boolean stoetterMeldingstype(Melding melding) {
+    public boolean haandtererUtsendingAv(Melding melding) {
         return melding instanceof SMSMelding;
     }
 

@@ -2,7 +2,6 @@ package no.sonat.meldingsvarsler.abonnent;
 
 import java.util.List;
 
-public interface AbonnentRepository {
-    void leggTilAbonnent(Abonnent abonnent);
+public interface AbonnentRepositoryReader {
     List<Abonnent> hentAbonnenter();
 }
