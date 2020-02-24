@@ -1,30 +1,20 @@
 package no.sonat.meldingsvarsler.meldinger.epost;
 
 import no.sonat.meldingsvarsler.infrastructure.abonnent.Abonnent;
+import no.sonat.meldingsvarsler.infrastructure.abonnent.AbonnentBasis;
 import no.sonat.meldingsvarsler.meldinger.Melding;
 
-public class EpostAbonnent implements Abonnent {
-    private final String navn;
+public class EpostAbonnent extends AbonnentBasis {
     private final String epostAdresse;
 
     public EpostAbonnent(String navn, String epostAdresse) {
+        super(navn);
         this.epostAdresse = epostAdresse;
-        this.navn = navn;
     }
 
     @Override
     public boolean abonnererPaa(Melding melding) {
         return melding instanceof EpostMelding;
-    }
-
-    @Override
-    public String navn() {
-        return navn;
-    }
-
-    @Override
-    public Boolean erAktiv() {
-        return true;
     }
 
     public String epostAdresse() {
