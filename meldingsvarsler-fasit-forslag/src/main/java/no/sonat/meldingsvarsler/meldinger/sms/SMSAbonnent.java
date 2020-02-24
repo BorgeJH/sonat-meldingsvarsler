@@ -1,10 +1,9 @@
 package no.sonat.meldingsvarsler.meldinger.sms;
 
-import no.sonat.meldingsvarsler.infrastructure.abonnent.Abonnent;
-import no.sonat.meldingsvarsler.infrastructure.abonnent.AbonnentBasis;
+import no.sonat.meldingsvarsler.infrastructure.abonnent.BasisAbonnent;
 import no.sonat.meldingsvarsler.meldinger.Melding;
 
-public class SMSAbonnent extends AbonnentBasis {
+public class SMSAbonnent extends BasisAbonnent {
     private final String telefonnummer;
 
     public SMSAbonnent(String navn, String telefonnummer) {

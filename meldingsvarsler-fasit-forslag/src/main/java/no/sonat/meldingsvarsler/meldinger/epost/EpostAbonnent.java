@@ -1,10 +1,9 @@
 package no.sonat.meldingsvarsler.meldinger.epost;
 
-import no.sonat.meldingsvarsler.infrastructure.abonnent.Abonnent;
-import no.sonat.meldingsvarsler.infrastructure.abonnent.AbonnentBasis;
+import no.sonat.meldingsvarsler.infrastructure.abonnent.BasisAbonnent;
 import no.sonat.meldingsvarsler.meldinger.Melding;
 
-public class EpostAbonnent extends AbonnentBasis {
+public class EpostAbonnent extends BasisAbonnent {
     private final String epostAdresse;
 
     public EpostAbonnent(String navn, String epostAdresse) {

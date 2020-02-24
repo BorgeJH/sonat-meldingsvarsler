@@ -2,10 +2,10 @@ package no.sonat.meldingsvarsler.infrastructure.abonnent;
 
 import no.sonat.meldingsvarsler.meldinger.Melding;
 
-public abstract class AbonnentBasis implements Abonnent {
+public abstract class BasisAbonnent implements Abonnent {
     private final String navn;
 
-    protected AbonnentBasis(String navn) {
+    protected BasisAbonnent(String navn) {
         this.navn = navn;
     }
 

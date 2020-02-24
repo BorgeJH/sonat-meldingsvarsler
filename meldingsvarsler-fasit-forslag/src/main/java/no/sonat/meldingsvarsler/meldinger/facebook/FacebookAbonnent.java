@@ -1,9 +1,9 @@
 package no.sonat.meldingsvarsler.meldinger.facebook;
 
-import no.sonat.meldingsvarsler.infrastructure.abonnent.AbonnentBasis;
+import no.sonat.meldingsvarsler.infrastructure.abonnent.BasisAbonnent;
 import no.sonat.meldingsvarsler.meldinger.Melding;
 
-public class FacebookAbonnent extends AbonnentBasis {
+public class FacebookAbonnent extends BasisAbonnent {
     private final String brukernavn;
 
     public FacebookAbonnent(String navn, String brukernavn) {
