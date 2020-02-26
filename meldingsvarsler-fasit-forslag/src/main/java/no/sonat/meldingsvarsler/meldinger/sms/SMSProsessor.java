@@ -1,10 +1,9 @@
 package no.sonat.meldingsvarsler.meldinger.sms;
 
-import no.sonat.meldingsvarsler.infrastructure.abonnent.Abonnent;
 import no.sonat.meldingsvarsler.meldinger.Melding;
 import no.sonat.meldingsvarsler.meldinger.MeldingProsessor;
 
-public class SMSProsessor implements MeldingProsessor {
+public class SMSProsessor implements MeldingProsessor<SMSMelding, SMSAbonnent> {
 
     @Override
     public boolean haandtererUtsendingAv(Melding melding) {
@@ -12,8 +11,8 @@ public class SMSProsessor implements MeldingProsessor {
     }
 
     @Override
-    public void sendMelding(Abonnent abonnent, Melding melding) {
-        sendSms((SMSAbonnent) abonnent, (SMSMelding) melding);
+    public void sendMelding(SMSAbonnent smsAbonnent, SMSMelding smsMelding) {
+        sendSms(smsAbonnent, smsMelding);
     }
 
     public void sendSms(SMSAbonnent smsAbonnent, SMSMelding smsMelding) {

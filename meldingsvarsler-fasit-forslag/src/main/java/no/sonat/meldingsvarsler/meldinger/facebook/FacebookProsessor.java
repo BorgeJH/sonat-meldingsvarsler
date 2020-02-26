@@ -1,18 +1,17 @@
 package no.sonat.meldingsvarsler.meldinger.facebook;
 
-import no.sonat.meldingsvarsler.infrastructure.abonnent.Abonnent;
 import no.sonat.meldingsvarsler.meldinger.Melding;
 import no.sonat.meldingsvarsler.meldinger.MeldingProsessor;
 
-public class FacebookProsessor implements MeldingProsessor {
+public class FacebookProsessor implements MeldingProsessor<FacebookMelding, FacebookAbonnent> {
     @Override
     public boolean haandtererUtsendingAv(Melding melding) {
         return melding instanceof FacebookMelding;
     }
 
     @Override
-    public void sendMelding(Abonnent abonnent, Melding melding) {
-        sendFaceMelding(((FacebookAbonnent) abonnent), (FacebookMelding) melding);
+    public void sendMelding(FacebookAbonnent facebookAbonnent, FacebookMelding facebookMelding) {
+        sendFaceMelding( facebookAbonnent, facebookMelding);
     }
 
     public void sendFaceMelding(FacebookAbonnent facebookAbonnent, FacebookMelding facebookMelding) {
