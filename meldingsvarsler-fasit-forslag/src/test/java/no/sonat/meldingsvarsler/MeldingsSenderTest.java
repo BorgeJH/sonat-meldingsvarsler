@@ -52,16 +52,16 @@ class MeldingsSenderTest {
         abonnentRepositoryWriter.leggTilAbonnent(new SMSAbonnent("Knut Pettersen", "77665551"));
         abonnentRepositoryWriter.leggTilAbonnent(new EpostAbonnent("Per Hansen", "per@epost.no"));
         abonnentRepositoryWriter.leggTilAbonnent(new EpostAbonnent("Kari Normann", "kari.normann@epost.no"));
-        abonnentRepositoryWriter.leggTilAbonnent(new FacebookAbonnent("Per Hansen", "per@eepost.no"));
+        abonnentRepositoryWriter.leggTilAbonnent(new FacebookAbonnent("Per Knutsen", "per.knutsen@epost.no"));
     }
 
     @Test
-    public void sendMeldingerTest() {
+    public void sendMeldinger() {
         meldingSender.sendMeldinger();
     }
 
     @Test
-    public void statistikk(){
+    public void visStatistikk(){
         abonnentRepositoryReader.hentAbonnenter().stream()
                 .map(abonnent -> abonnent.getClass())
                 .distinct()
