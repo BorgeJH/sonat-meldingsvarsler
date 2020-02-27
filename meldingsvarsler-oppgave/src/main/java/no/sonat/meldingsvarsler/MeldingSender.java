@@ -76,6 +76,26 @@ public class MeldingSender {
         }
     }
 
+    public void lagreEpostAbonnenter() {
+        File file = new File("epostabonnenter.csv");
+        FileWriter fileWriter = null;
+        try {
+            StringBuffer sb = new StringBuffer();
+            epostAbonnenter.entrySet()
+                    .forEach(abonnent -> sb.append(abonnent.getKey() +"," +  abonnent.getValue()));
+
+            fileWriter = new FileWriter(file);
+            fileWriter.append(sb.toString());
+        } catch (IOException e) {
+        } finally {
+            try {
+                fileWriter.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
     private void sendSms(String navn, String telefonnummer, String tekstmelding) {
         System.out.println("Sender SMS til "
                 + telefonnummer
