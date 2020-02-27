@@ -9,6 +9,9 @@ import no.sonat.meldingsvarsler.meldinger.Melding;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+Interface Segregation Principle
+ */
 public class AbonnentRespositoryStub implements AbonnentRepositoryReader, AbonnentRepositoryWriter,
         AbonnentRepositoryStatistikk {
     private final List<Abonnent> abonnenter;

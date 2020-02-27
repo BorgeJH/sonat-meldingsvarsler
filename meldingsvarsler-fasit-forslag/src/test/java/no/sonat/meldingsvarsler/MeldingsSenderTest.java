@@ -47,10 +47,10 @@ class MeldingsSenderTest {
                 "Vårens kleskolleksjon har kommet. "));
         meldingRespositoryWriter.leggTilMelding(new FacebookMelding("Vårens kleskolleksjon har kommet. Løp og kjøp. Førstemann til mølla!! Del på Facebook."));
 
-        abonnentRespositoryWriter.leggTilAbonnent(new SMSAbonnent("Per Hansen", "90965253"));
+        abonnentRespositoryWriter.leggTilAbonnent(new SMSAbonnent("Per Hansen", "909 65 253"));
         abonnentRespositoryWriter.leggTilAbonnent(new SMSAbonnent("Mohammed Normann", "77881111"));
         abonnentRespositoryWriter.leggTilAbonnent(new SMSAbonnent("Per Abdullah", "77881111"));
-        abonnentRespositoryWriter.leggTilAbonnent(new SMSAbonnent("Knut Pettersen", "7766555"));
+        abonnentRespositoryWriter.leggTilAbonnent(new SMSAbonnent("Knut Pettersen", "77665551"));
         abonnentRespositoryWriter.leggTilAbonnent(new EpostAbonnent("Per Hansen", "per@epost.no"));
         abonnentRespositoryWriter.leggTilAbonnent(new EpostAbonnent("Kari Normann", "kari.normann@epost.no"));
         abonnentRespositoryWriter.leggTilAbonnent(new FacebookAbonnent("Per Hansen", "per@eepost.no"));

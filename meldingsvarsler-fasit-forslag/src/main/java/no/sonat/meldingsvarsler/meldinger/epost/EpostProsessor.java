@@ -3,6 +3,10 @@ package no.sonat.meldingsvarsler.meldinger.epost;
 import no.sonat.meldingsvarsler.meldinger.Melding;
 import no.sonat.meldingsvarsler.meldinger.MeldingProsessor;
 
+/*
+Single Responsibility Principle
+Håndterer kun utsendelse av meldinger av type EpostMelding
+ */
 public class EpostProsessor implements MeldingProsessor<EpostMelding, EpostAbonnent> {
     @Override
     public boolean haandtererUtsendingAv(Melding melding) {

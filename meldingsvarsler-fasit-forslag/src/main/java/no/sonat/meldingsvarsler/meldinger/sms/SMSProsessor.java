@@ -2,7 +2,10 @@ package no.sonat.meldingsvarsler.meldinger.sms;
 
 import no.sonat.meldingsvarsler.meldinger.Melding;
 import no.sonat.meldingsvarsler.meldinger.MeldingProsessor;
-
+/*
+Single Responsibility Principle
+Håndterer kun utsendelse av SMSMeldinger
+ */
 public class SMSProsessor implements MeldingProsessor<SMSMelding, SMSAbonnent> {
 
     @Override

@@ -3,6 +3,10 @@ package no.sonat.meldingsvarsler.meldinger.facebook;
 import no.sonat.meldingsvarsler.infrastructure.abonnent.BasisAbonnent;
 import no.sonat.meldingsvarsler.meldinger.Melding;
 
+/*
+Single Responsibility Principle
+Håndterer kun abonnenter av FacebookAbonnent
+ */
 public class FacebookAbonnent extends BasisAbonnent {
     private final String brukernavn;
 

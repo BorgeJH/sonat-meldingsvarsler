@@ -3,6 +3,10 @@ package no.sonat.meldingsvarsler.meldinger.facebook;
 import no.sonat.meldingsvarsler.meldinger.Melding;
 import no.sonat.meldingsvarsler.meldinger.MeldingProsessor;
 
+/*
+Single Responsibility Principle
+Håndterer kun utsendelse av FacebookMelding
+ */
 public class FacebookProsessor implements MeldingProsessor<FacebookMelding, FacebookAbonnent> {
     @Override
     public boolean haandtererUtsendingAv(Melding melding) {
