@@ -15,7 +15,7 @@ import no.sonat.meldingsvarsler.infrastructure.meldinger.MeldingRepositoryWriter
 import no.sonat.meldingsvarsler.meldinger.sms.SMSAbonnent;
 import no.sonat.meldingsvarsler.meldinger.sms.SMSMelding;
 import no.sonat.meldingsvarsler.meldinger.sms.SMSProsessor;
-import no.sonat.meldingsvarsler.stubs.AbonnentRespositoryStub;
+import no.sonat.meldingsvarsler.stubs.AbonnentRepositoryStub;
 import no.sonat.meldingsvarsler.stubs.MeldingRepositoryStub;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,36 +24,35 @@ import java.util.ArrayList;
 import java.util.List;
 
 class MeldingsSenderTest {
-    final MeldingRepositoryStub meldingRespositoryStub = new MeldingRepositoryStub();
-    final AbonnentRespositoryStub abonnentRespositoryStub = new AbonnentRespositoryStub();
+    final MeldingRepositoryStub meldingRepositoryStub = new MeldingRepositoryStub();
+    final AbonnentRepositoryStub abonnentRepositoryStub = new AbonnentRepositoryStub();
 
-    final MeldingRepository meldingRepositoryReader = meldingRespositoryStub;
-    final AbonnentRepositoryReader abonnentRespositoryReader = abonnentRespositoryStub;
-    final AbonnentRepositoryStatistikk abonnentRepositoryStatistikk = abonnentRespositoryStub;
+    final MeldingRepository meldingRepositoryReader = meldingRepositoryStub;
+    final AbonnentRepositoryReader abonnentRepositoryReader = abonnentRepositoryStub;
+    final AbonnentRepositoryStatistikk abonnentRepositoryStatistikk = abonnentRepositoryStub;
     final List<MeldingProsessor> meldingProsessorer = new ArrayList<>();
-    final MeldingSender meldingSender = new MeldingSender(meldingRepositoryReader, abonnentRespositoryReader, meldingProsessorer);
+    final MeldingSender meldingSender = new MeldingSender(meldingRepositoryReader, abonnentRepositoryReader, meldingProsessorer);
+    final AbonnentRepositoryWriter abonnentRepositoryWriter = abonnentRepositoryStub;
+    final MeldingRepositoryWriter meldingRepositoryWriter = meldingRepositoryStub;
 
     @BeforeEach
     void initEach() {
-        final AbonnentRepositoryWriter abonnentRespositoryWriter = abonnentRespositoryStub;
-        final MeldingRepositoryWriter meldingRespositoryWriter = meldingRespositoryStub;
-
         meldingProsessorer.add(new EpostProsessor());
         meldingProsessorer.add(new FacebookProsessor());
         meldingProsessorer.add(new SMSProsessor());
 
-        meldingRespositoryWriter.leggTilMelding(new SMSMelding("Vårens kleskolleksjon har kommet. Løp og kjøp. Førstemann til mølla!!"));
-        meldingRespositoryWriter.leggTilMelding(new EpostMelding("Løp og kjøp. Førstemann til mølla!!",
+        meldingRepositoryWriter.leggTilMelding(new SMSMelding("Vårens kleskolleksjon har kommet. Løp og kjøp. Førstemann til mølla!!"));
+        meldingRepositoryWriter.leggTilMelding(new EpostMelding("Løp og kjøp. Førstemann til mølla!!",
                 "Vårens kleskolleksjon har kommet. "));
-        meldingRespositoryWriter.leggTilMelding(new FacebookMelding("Vårens kleskolleksjon har kommet. Løp og kjøp. Førstemann til mølla!! Del på Facebook."));
+        meldingRepositoryWriter.leggTilMelding(new FacebookMelding("Vårens kleskolleksjon har kommet. Løp og kjøp. Førstemann til mølla!! Del på Facebook."));
 
-        abonnentRespositoryWriter.leggTilAbonnent(new SMSAbonnent("Per Hansen", "909 65 253"));
-        abonnentRespositoryWriter.leggTilAbonnent(new SMSAbonnent("Mohammed Normann", "77881111"));
-        abonnentRespositoryWriter.leggTilAbonnent(new SMSAbonnent("Per Abdullah", "77881111"));
-        abonnentRespositoryWriter.leggTilAbonnent(new SMSAbonnent("Knut Pettersen", "77665551"));
-        abonnentRespositoryWriter.leggTilAbonnent(new EpostAbonnent("Per Hansen", "per@epost.no"));
-        abonnentRespositoryWriter.leggTilAbonnent(new EpostAbonnent("Kari Normann", "kari.normann@epost.no"));
-        abonnentRespositoryWriter.leggTilAbonnent(new FacebookAbonnent("Per Hansen", "per@eepost.no"));
+        abonnentRepositoryWriter.leggTilAbonnent(new SMSAbonnent("Per Hansen", "909 65 253"));
+        abonnentRepositoryWriter.leggTilAbonnent(new SMSAbonnent("Mohammed Normann", "77881111"));
+        abonnentRepositoryWriter.leggTilAbonnent(new SMSAbonnent("Per Abdullah", "77881111"));
+        abonnentRepositoryWriter.leggTilAbonnent(new SMSAbonnent("Knut Pettersen", "77665551"));
+        abonnentRepositoryWriter.leggTilAbonnent(new EpostAbonnent("Per Hansen", "per@epost.no"));
+        abonnentRepositoryWriter.leggTilAbonnent(new EpostAbonnent("Kari Normann", "kari.normann@epost.no"));
+        abonnentRepositoryWriter.leggTilAbonnent(new FacebookAbonnent("Per Hansen", "per@eepost.no"));
     }
 
     @Test
@@ -63,7 +62,7 @@ class MeldingsSenderTest {
 
     @Test
     public void statistikk(){
-        abonnentRespositoryReader.hentAbonnenter().stream()
+        abonnentRepositoryReader.hentAbonnenter().stream()
                 .map(abonnent -> abonnent.getClass())
                 .distinct()
                 .forEach(aClass ->

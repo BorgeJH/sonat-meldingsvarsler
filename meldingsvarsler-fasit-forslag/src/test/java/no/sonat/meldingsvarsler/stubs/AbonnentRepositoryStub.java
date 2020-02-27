@@ -12,11 +12,11 @@ import java.util.List;
 /*
 Interface Segregation Principle
  */
-public class AbonnentRespositoryStub implements AbonnentRepositoryReader, AbonnentRepositoryWriter,
+public class AbonnentRepositoryStub implements AbonnentRepositoryReader, AbonnentRepositoryWriter,
         AbonnentRepositoryStatistikk {
     private final List<Abonnent> abonnenter;
 
-    public AbonnentRespositoryStub() {
+    public AbonnentRepositoryStub() {
         abonnenter = new ArrayList<>();
     }
 

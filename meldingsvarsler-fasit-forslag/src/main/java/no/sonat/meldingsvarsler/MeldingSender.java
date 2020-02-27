@@ -8,17 +8,17 @@ import java.util.List;
 
 public class MeldingSender {
     private final MeldingRepository meldingRepository;
-    private final AbonnentRepositoryReader abonnentRespository;
+    private final AbonnentRepositoryReader abonnentRepository;
     private final List<MeldingProsessor> meldingProsessorer;
 
     /*
     Dependency Inversion Principle :
-    abonnentRespository, meldingRepository, meldingProsessors
+    abonnentRepository, meldingRepository, meldingProsessors
     */
     public MeldingSender(MeldingRepository meldingRepository,
-            AbonnentRepositoryReader abonnentRespository,
+            AbonnentRepositoryReader abonnentRepository,
             List<MeldingProsessor> meldingProsessors) {
-        this.abonnentRespository = abonnentRespository;
+        this.abonnentRepository = abonnentRepository;
         this.meldingProsessorer = meldingProsessors;
         this.meldingRepository = meldingRepository;
     }
@@ -28,7 +28,7 @@ public class MeldingSender {
             meldingProsessorer.stream()
                 .filter(meldingProsessor -> meldingProsessor.haandtererUtsendingAv(melding))
                 .forEach(meldingProsessor -> {
-                    abonnentRespository.hentAbonnenter().stream()
+                    abonnentRepository.hentAbonnenter().stream()
                             .filter(abonnent -> abonnent.abonnererPaa(melding))
                             .forEach(abonnent -> meldingProsessor.sendMelding(abonnent, melding));
                 });
