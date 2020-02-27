@@ -21,6 +21,7 @@ public class FacebookProsessor implements MeldingProsessor<FacebookMelding, Face
     public void sendFaceMelding(FacebookAbonnent facebookAbonnent, FacebookMelding facebookMelding) {
         System.out.println("Sender Facebook melding til "
                 + facebookAbonnent.navn()
+                + "med brukernavn " + facebookAbonnent.brukernavn()
                 + " => " + facebookMelding.melding());
     }
 }
